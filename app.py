@@ -69,19 +69,27 @@ with st.sidebar:
     st.subheader("2. Analysis")
     st.caption("Runs themes, quotes, fee issue, pulse and fee explainer: about 125 LLM calls.")
     if st.checkbox("I understand this uses API credits") and st.button("Run analysis", type="primary"):
-        try:
+        if not os.getenv("ANTHROPIC_API_KEY"):
+            st.error("ANTHROPIC_API_KEY is not set. Add it to .env (or Streamlit secrets) and restart. "
+                     "You don't need it just to view the saved results or use the Approval tab.")
+        else:
             with st.status("Running analysis...", expanded=True) as status:
-                st.write("Themes, quotes, fee issue")
-                analyze.main()
-                st.write("Weekly pulse")
-                pulse.main()
-                st.write("Fee explainer")
-                fee_explainer.run()
-                status.update(label="Analysis complete", state="complete")
-            st.session_state.pop("decision", None)  # new outputs need a fresh approval
-            st.rerun()
-        except (Exception, SystemExit) as e:
-            st.error(f"Analysis failed: {e}")
+                try:
+                    st.write("Themes, quotes, fee issue")
+                    analyze.main()
+                    st.write("Weekly pulse")
+                    pulse.main()
+                    st.write("Fee explainer")
+                    fee_explainer.run()
+                    status.update(label="Analysis complete", state="complete")
+                    done = True
+                except (Exception, SystemExit) as e:
+                    status.update(label="Analysis failed", state="error")
+                    st.error(f"{type(e).__name__}: {e}")
+                    done = False
+            if done:
+                st.session_state.pop("decision", None)  # new outputs need a fresh approval
+                st.rerun()
 
     st.divider()
     st.caption(("Simulated mode: no real calls" if is_simulated() else "LIVE mode: Approve will write to Google"))
