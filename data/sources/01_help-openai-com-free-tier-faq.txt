@@ -1,0 +1,42 @@
+URL: https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq
+
+ChatGPT Free Tier FAQ
+ChatGPT is free to use. Free tier users have access to a range of chat capabilities, tools, and GPTs. The default model and available limits can change over time.
+Updated: 2 days ago
+Free users have access to GPT-5.6 Luna. Think is available in the ChatGPT mobile app and is rolling out on the web. On mobile, open the + menu and select Think. In addition to advanced intelligence capabilities, Free tier users can now:
+
+* Search the web and obtain up-to-date information
+
+* Analyze and extract insights from your data
+
+* Upload images or files in your prompts
+
+* Discover and use GPTs
+
+* Create images in ChatGPT
+
+* Use Library with 500 MB of storage
+
+Users on ChatGPT Plus have access to higher rate limits. Learn more about ChatGPT Plus.
+
+Ads may appear in the Free tier in certain countries. See the ads FAQ for current availability and controls.
+Can I create a GPT as a Free tier user?
+No. New GPT creation and publishing are not available on personal ChatGPT accounts, including Free, Go, Plus, and Pro.
+You can continue using existing GPTs. Editing an existing GPT still depends on your plan and permissions.
+GPT creation remains available in Business, Enterprise, and Edu workspaces when workspace settings and permissions allow it.
+How do rate limits work on the Free tier?
+Free users have unlimited everyday text chats, subject to abuse-prevention safeguards. File uploads, image generation, voice, data analysis, and other tools have separate usage limits. ChatGPT will notify you when you reach an applicable limit.
+GPT usage follows your current Free tier model limit. When you reach that limit, GPT access pauses until the limit resets; ChatGPT shows the reset timing in-product.
+The following tools can have usage limits separate from the main chat limit:
+
+* Data analysis with ChatGPT
+
+* File and image uploads
+
+* Create images in ChatGPT
+
+If you reach a rate limit for any of these tools, you will need to wait for a later time to use any of these tools.
+Will my rate limit reset when I upgrade my account to ChatGPT Plus?
+Yes. If you reach a rate limit on your Free tier account, your usage rates will reset when you update your account to a Plus plan, a Pro plan, or a Business plan.
+Is performance for GPTs different for users on the Free tier?
+GPT usage on the Free tier follows the same plan limits as ChatGPT. Advanced functionality, including data analysis, file uploads, and image creation, can have stricter limits than paid plans.
