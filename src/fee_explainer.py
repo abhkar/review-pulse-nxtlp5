@@ -152,12 +152,10 @@ Chunks:
     return "\n".join(lines) + "\n"
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--fetch", action="store_true", help="fetch the URLs and cache their text")
-    args = ap.parse_args()
+def run(fetch: bool = False) -> str:
+    """Build outputs/fee_explainer.md from the cached source pages and return its text."""
     urls = read_urls()
-    if args.fetch:
+    if fetch:
         fetch_all(urls)
     sources = load_sources(urls)
     if len(sources) < 2:
@@ -166,7 +164,13 @@ def main():
     fee = json.loads(ANALYSIS.read_text())["fee_issue"]
     md = explain(fee, sources, date.today().isoformat())
     OUT.write_text(md)
-    print(md)
+    return md
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--fetch", action="store_true", help="fetch the URLs and cache their text")
+    print(run(ap.parse_args().fetch))
 
 
 if __name__ == "__main__":
