@@ -15,7 +15,7 @@ COUNTRY, LANG = "in", "en"
 WEEKS = 12
 OUT = Path(__file__).resolve().parent.parent / "data" / "reviews.csv"
 BATCH = 200
-MAX_BATCHES = 2500  # safety cap against endless pagination
+MAX_BATCHES = 4000  # safety cap against endless pagination
 PER_DAY = 150  # weighted sample size per day (app gets ~2,400 English reviews/day)
 
 
