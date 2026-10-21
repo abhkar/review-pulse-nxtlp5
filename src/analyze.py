@@ -27,7 +27,7 @@ MIN_FEE_REVIEWS = 15  # below this we say no fee confusion was found
 
 # Words that hint a review is about money. Used only to narrow the LLM pass.
 FEE_KEYWORDS = re.compile(
-    r"\b(pric\w*|subscri\w*|charg\w*|refund\w*|bill\w*|gst|tax\w*|renew\w*|expensive|"
+    r"\b(?:pric\w*|subscri\w*|charg\w*|refund\w*|bill\w*|gst|tax\w*|renew\w*|expensive|"
     r"pay\w*|paid|cost\w*|money|rupee\w*|rs\.?|inr|usd|dollar\w*|plus|pro|premium|"
     r"cancel\w*|deduct\w*|fee\w*|afford\w*|cheap\w*|free trial|purchase\w*|invoice\w*)\b|₹|\$",
     re.IGNORECASE)
@@ -139,7 +139,7 @@ Reviews:
 
 # ---------- 4. fee issue ----------
 
-def find_fee_issue(df: pd.DataFrame, themes: list, theme_of: dict) -> dict:
+def find_fee_issue(df: pd.DataFrame, exclude: set = frozenset()) -> dict:
     hits = df[df.text.str.contains(FEE_KEYWORDS)]
     print(f"Fee keyword pass: {len(hits)} of {len(df)} reviews match")
     sample = hits.sample(min(200, len(hits)), random_state=3)
@@ -180,7 +180,7 @@ Reviews:
     if top["review_count"] < MIN_FEE_REVIEWS:
         return {"found": False, "keyword_matches": len(hits), "categories": cats}
     members = df.loc[[i for i, l in labels.items() if l == top["id"]]]
-    quotes = pick_quotes(members, f'the fee issue "{top["name"]}": {top["description"]}', n=2)
+    quotes = pick_quotes(members, f'the fee issue "{top["name"]}": {top["description"]}', n=2, exclude=exclude)
     return {"found": True, "fee_name": top["name"], "description": top["description"],
             "review_count": top["review_count"],
             "share_of_all_reviews_pct": round(100 * top["review_count"] / len(df), 1),
@@ -215,7 +215,7 @@ def main():
         quotes += q
 
     print("Finding fee issue...")
-    fee = find_fee_issue(df, themes, theme_of)
+    fee = find_fee_issue(df, exclude=used)
     if not fee["found"]:
         billing = next((t for t in themes if re.search(r"bill|pric|pay|subscri|fee|cost", t["name"] + t["description"], re.I)), None)
         fee["closest_billing_theme"] = billing["name"] if billing else None

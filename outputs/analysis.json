@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "reviews_analyzed": 9009,
+    "date_from": "2026-07-29",
+    "date_to": "2026-10-20",
+    "note": "Counts are from a weighted sample (1-3 star and longer reviews over-sampled), not the full review stream."
+  },
+  "themes": [
+    {
+      "id": "t2",
+      "name": "Inaccurate or unreliable answers",
+      "description": "Wrong or vague information, hallucinations, flattery over correctness, ignoring instructions, misunderstanding questions, and declining quality over time.",
+      "review_count": 790,
+      "share_pct": 8.8
+    },
+    {
+      "id": "t5",
+      "name": "Learning, study help and personal companionship",
+      "description": "Users value it as a tutor for homework, exam prep and language learning, and as a friend, mentor or emotional support through voice and memory.",
+      "review_count": 789,
+      "share_pct": 8.8
+    },
+    {
+      "id": "t1",
+      "name": "Usage limits and paywall frustration",
+      "description": "Complaints about free-tier caps on images, uploads, voice and messages, quick lockouts, forced upgrades, and limits hitting even paying subscribers.",
+      "review_count": 646,
+      "share_pct": 7.2
+    },
+    {
+      "id": "t4",
+      "name": "Image generation and photo editing",
+      "description": "Feedback on creating and editing pictures, both praise for the results and complaints about ignored details, unrequested changes, blocked prompts and low image limits.",
+      "review_count": 633,
+      "share_pct": 7.0
+    },
+    {
+      "id": "t3",
+      "name": "Bugs, account and subscription issues",
+      "description": "Technical problems such as lost chat history, login failures, send errors, update problems, Work mode default, account switching or deletion, and billing or subscription mismatches.",
+      "review_count": 514,
+      "share_pct": 5.7
+    }
+  ],
+  "top_themes": [
+    {
+      "id": "t2",
+      "name": "Inaccurate or unreliable answers",
+      "description": "Wrong or vague information, hallucinations, flattery over correctness, ignoring instructions, misunderstanding questions, and declining quality over time.",
+      "review_count": 790,
+      "share_pct": 8.8
+    },
+    {
+      "id": "t5",
+      "name": "Learning, study help and personal companionship",
+      "description": "Users value it as a tutor for homework, exam prep and language learning, and as a friend, mentor or emotional support through voice and memory.",
+      "review_count": 789,
+      "share_pct": 8.8
+    },
+    {
+      "id": "t1",
+      "name": "Usage limits and paywall frustration",
+      "description": "Complaints about free-tier caps on images, uploads, voice and messages, quick lockouts, forced upgrades, and limits hitting even paying subscribers.",
+      "review_count": 646,
+      "share_pct": 7.2
+    }
+  ],
+  "quotes": [
+    {
+      "quote": "it has been giving vague or incorrect answers, repeatedly saying things like \"maybe\" or \"it's possible.\"",
+      "review_id": "c3ad4468-41a5-43d0-a401-572ba56bef95",
+      "date": "2026-09-17",
+      "rating": 1,
+      "theme": "Inaccurate or unreliable answers"
+    },
+    {
+      "quote": "I use for study when no one is here to teach me I so chat GPT teaches me",
+      "review_id": "3b29abff-26d1-40e1-a1d3-f467ef2ae17b",
+      "date": "2026-08-24",
+      "rating": 5,
+      "theme": "Learning, study help and personal companionship"
+    },
+    {
+      "quote": "you reach your daily limit in just a minute when you're paying for it",
+      "review_id": "86e5a6c1-ed91-41a6-847e-304c16068dad",
+      "date": "2026-08-26",
+      "rating": 1,
+      "theme": "Usage limits and paywall frustration"
+    }
+  ],
+  "fee_issue": {
+    "found": true,
+    "fee_name": "Paywalled usage limits",
+    "description": "Free users hit chat, image, photo-upload and time caps and are told to buy Plus/premium to keep using the app; chats get paused or blocked after a few messages.",
+    "review_count": 190,
+    "share_of_all_reviews_pct": 2.1,
+    "keyword_matches": 638,
+    "other_categories": [
+      {
+        "id": "f2",
+        "name": "Paid plans still limited or poor value",
+        "description": "Paying subscribers (Plus, Go, Pro) still hit usage, image or time limits, ads or degraded quality, and feel the price is not worth it.",
+        "review_count": 98
+      },
+      {
+        "id": "f4",
+        "name": "Price too high / unaffordable",
+        "description": "Subscription cost (about Rs 499/month, $20) is too expensive for students and middle-class or poor users, who ask for lower prices or a free student tier.",
+        "review_count": 46
+      },
+      {
+        "id": "f3",
+        "name": "Payment taken but plan not activated or payment fails",
+        "description": "Users were charged (e.g. Rs 399 Go, Plus) but the plan stays inactive or shows 'upgrade'; UPI, promo-code and free-trial payments are rejected or 'not approved'.",
+        "review_count": 20
+      },
+      {
+        "id": "f5",
+        "name": "Cancellation and unwanted recurring charges",
+        "description": "Users report being charged after cancelling, being unable to cancel in-app or to find the renewal date, and nagging upgrade reminders.",
+        "review_count": 15
+      }
+    ],
+    "quotes": [
+      {
+        "quote": "After just 2 simple questions, the app starts pushing for a Plus subscription and blocks further usage.",
+        "review_id": "7e2ddd26-26f9-4462-912a-25bdccad66b9",
+        "date": "2026-07-29",
+        "rating": 1
+      },
+      {
+        "quote": "recently chats where you sent images before get blocked for hours until you pay",
+        "review_id": "e4a7e62e-80e6-4eb7-b4c6-b8ed9f28e54f",
+        "date": "2026-09-18",
+        "rating": 1
+      }
+    ]
+  },
+  "unthemed_reviews": 5637
+}
