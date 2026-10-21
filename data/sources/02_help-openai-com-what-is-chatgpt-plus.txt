@@ -1,0 +1,82 @@
+URL: https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus
+
+What is ChatGPT Plus?
+Information about our paid subscription plan, Plus.
+Updated: 24 hours ago
+ChatGPT Plus includes broader model and tool access than Free. Because model availability and limits change over time, check the model picker for the options on your account.
+
+For more information, please refer to our article: Retiring GPT-4o and other ChatGPT models
+ChatGPT Plus is a subscription plan that provides enhanced access to the ChatGPT web app for $20/month.
+Benefits of ChatGPT Plus
+
+* Priority access during high-traffic periods: Fewer interruptions even when demand is high.
+* Higher model limits: Use more messages and broader model options than on the Free plan. Model availability changes during rollouts; use the model picker for current access.
+* Advanced reasoning access: Use the reasoning options currently available to your account for coding, planning, and multi-step analysis.
+* Faster response speeds: Enjoy quicker replies in conversations.
+* Expanded features include:
+   * Voice conversations
+   * Image generation
+   * File uploads and analysis
+   * Deep Research tools (where available)
+
+Subscription Details
+
+* Price: $20/month (billed monthly).
+
+* Platform: ChatGPT Plus is available on the ChatGPT website and supported apps.
+
+* Not included: API usage is separate and billed independently. See API pricing.
+
+How do I sign up?
+
+1. Log into ChatGPT.
+2. Click on your profile icon -> Upgrade Plan.
+3. Select Get Plus.
+
+Usage Limits
+To ensure a smooth experience for all users, Plus subscriptions may include usage limits such as message caps, especially during high demand. These limits may vary based on system conditions.
+Use Plus with participating tools
+Eligible Plus subscribers can authorize participating tools to use their included OpenAI allowance through Sign in with ChatGPT. Signing in and sharing your allowance are separate choices: the tool can use your allowance only after you approve the request to share it. This does not permit sharing your account credentials or reselling access.
+
+Usage in connected tools draws from the applicable allowance; connecting a tool does not create a separate allowance. This is different from API usage billed to an OpenAI API account, which is not included in Plus.
+
+For supported tools, eligibility, and usage controls, see Sign-in with ChatGPT token sharing.
+Billing and Invoices
+You can manage your subscription, view invoices, and cancel your plan by:
+
+1. Log into ChatGPT
+2. Click on your profile icon -> Settings
+3. Select Account
+4. Confirm that you’re signed in to the ChatGPT account associated with your Plus or Pro subscription. The email where you receive invoices or receipts may be different from your ChatGPT account email.
+
+Troubleshooting: Charged but still on Free plan
+If you were charged for ChatGPT Plus or Pro but your account still shows the Free plan, try the steps below:
+
+* Before signing out, check the email on the ChatGPT account associated with your subscription. If you’re still signed in on the web, go to Settings > Account. For help identifying your account and sign-in method, see: Troubleshooting ChatGPT sign-in.
+
+* If you signed up with Apple and selected Hide My Email, your ChatGPT account may use an `@privaterelay.appleid.com` address. Select Continue with Apple and use the same Apple account to access it.
+
+* On the iOS or Android app, go to Settings > Restore purchases to sync your subscription.
+
+* After confirming the account email and sign-in method, sign out on the device where you see the Free plan, then sign back in to the ChatGPT account associated with your subscription.
+
+* If the issue persists, contact us and include the receipt or the last four digits of the card that was charged so we can locate your subscription.
+
+Canceling your subscription
+If you would like to cancel your subscription, please refer to our article: How do I cancel my subscription for ChatGPT Plus or ChatGPT Pro?
+Refunds
+If you believe you were incorrectly charged or would like to request a refund, you can request a refund. Refunds are typically processed within 5–10 business days after approval. When submitting your request, sign in to the ChatGPT account associated with your Plus or Pro subscription. Its account email may differ from the email where you receive receipts.
+VAT Exemption Requests
+If you would like to request a VAT exemption request, please refer to our article: How do I submit a VAT exemption request?
+Is there an annual plan available?
+Currently, we do not support annual billing or the option to pay for multiple months in advance for ChatGPT Plus subscriptions.
+Is there a ChatGPT Pro version?
+We have an additional subscription option, entitled ChatGPT Pro.
+
+Pro is a higher-tier plan that may include additional features, higher usage limits, or expanded access to premium tools.
+
+For additional information on ChatGPT Pro, please refer to our article: What is ChatGPT Pro?
+Data Privacy
+OpenAI may use conversations to improve model performance and safety. You can opt out of having your data used for training at any time. If you would like to do so, please refer to our help article here: Data Controls FAQ
+
+For more information, see our Privacy Policy and Terms of Use.
