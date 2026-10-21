@@ -115,7 +115,9 @@ def explain(fee: dict, sources: list, today: str) -> str:
 Fee issue from user reviews: "{fee['fee_name']}" - {fee['description']}
 
 Write AT MOST {MAX_BULLETS} bullets using ONLY the source chunks below. Neutral, facts-only tone, no promises,
-no advice, no speculation. If the chunks do not state something, do not say it. Each bullet needs:
+no advice, no speculation. If the chunks do not state something, do not say it.
+The customer is in India: if a chunk states prices in INR (₹), include one bullet with them, exactly as stated
+(including whether GST is included), and leave out USD prices unless no INR price is given. Each bullet needs:
 - "chunk_id": the chunk it comes from
 - "evidence": an exact phrase (copied character for character) from that chunk that supports the bullet
 - "text": the bullet, max 30 words
@@ -136,13 +138,13 @@ Chunks:
         raise RuntimeError("No bullet could be tied to a source chunk with verbatim evidence.")
     bullets = bullets[:MAX_BULLETS]
 
-    # The 2 links: the two sources cited by the most bullets (ties -> lower source number).
+    # Links: every source a bullet cites (at least 2 when 2+ are cited), so each bullet is traceable.
     url_of = {s["n"]: s["url"] for s in sources}
     cites = {}
     for b in bullets:
         n = by_id[b["chunk_id"]]["src"]
         cites[n] = cites.get(n, 0) + 1
-    links = [url_of[n] for n in sorted(cites, key=lambda n: (-cites[n], n))[:2]]
+    links = [url_of[n] for n in sorted(cites, key=lambda n: (-cites[n], n))]
 
     lines = ["# What the official sources say about free-plan limits and upgrades", ""]
     lines += [f"- {b['text']} [source {by_id[b['chunk_id']]['src']}]" for b in bullets]
