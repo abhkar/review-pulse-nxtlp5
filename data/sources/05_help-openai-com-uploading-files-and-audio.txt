@@ -1,0 +1,67 @@
+URL: https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt
+
+Uploading files and audio to ChatGPT
+Upload documents, spreadsheets, presentations, images, and audio to ask questions and work with their contents.
+
+Updated: 18 hours ago
+Overview
+
+ChatGPT can work with documents, spreadsheets, presentations, images, and audio files you attach to a conversation. You can ask it to summarize a document, compare information, analyze a spreadsheet, or transcribe and discuss an audio recording.
+
+Audio understanding and transcription performance may vary across languages.
+
+Availability
+
+Document, spreadsheet, presentation, text, and image uploads are available on Free and paid ChatGPT plans, subject to plan-specific limits and account settings, on the web and in supported mobile apps.
+
+Audio uploads are available with paid ChatGPT subscriptions and workspaces, including Enterprise. Audio uploads are not available on the Free plan at this time.
+
+Availability may vary by workspace settings, region, client version, and selected model.
+
+The API has separate file-upload requirements, supported purposes, and limits.
+
+Audio upload and processing limits
+
+Audio files can be up to 512 MB.
+
+Longer recordings may be processed in smaller sections when Data Analysis is available. Processing is best-effort, and very long recordings may time out.
+
+Document and image upload limits
+
+This section covers documents, spreadsheets, presentations, text files, and images.
+
+File size
+
+Documents and presentations have a maximum size of 512 MB per file.
+Text and document files are capped at 2 million tokens per file. This token limit does not apply to spreadsheets.
+CSV files and spreadsheets have a size limit of approximately 50 MB, depending on the size of each row.
+Images have a limit of 20 MB per image.
+Upload rate and storage
+
+You can upload up to 80 files every 3 hours. Free users are limited to 3 file uploads per day. OpenAI may lower these limits during peak hours.
+
+Shared upload storage is capped at 25 GB per user and 100 GB per organization. ChatGPT displays an error when a user or organization reaches a cap.
+
+You can check Library storage usage in Settings > Storage. ChatGPT does not currently show how much of your rolling upload-rate quota has been used or remains. For Library storage information, see: Using Library to manage files in ChatGPT.
+
+Projects and GPT knowledge
+
+Project file limits depend on your plan:
+
+Free: up to 5 files per project.
+Go and Plus: up to 25 files per project.
+Edu, Pro, Business, and Enterprise: up to 40 files per project.
+You can attach up to 20 files to a GPT as knowledge. For details, see Creating and editing GPTs. File-size restrictions and user or organization usage caps also apply.
+
+Troubleshoot an upload
+
+If you see an “upload limit reached” message despite few or no recent uploads:
+
+Confirm that you’re signed in to the correct account and subscription plan.
+If the error message shows a retry time, wait until that time before uploading again. Failed upload attempts can sometimes count toward the upload-rate limit.
+On web, open Settings > Storage to check Library usage. Library storage is separate from upload-rate limits. For help managing saved files, see Using Library to manage files in ChatGPT.
+Check OpenAI Status for incidents that may affect uploads.
+If the issue continues, contact OpenAI Support with the details listed below.
+If an audio upload fails, check that the file uses a supported audio format and contains a valid, decodable audio stream. WebM and MP4 files identified as video are not supported by audio uploads.
+
+If you contact OpenAI Support, include your account email, a screenshot of the issue, the timestamp and time zone, the platform or browser you used, and the request ID if available.

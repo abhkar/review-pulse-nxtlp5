@@ -107,7 +107,7 @@ def retrieve(chunks: list, query: str, k: int = TOP_K) -> list:
 
 def explain(fee: dict, sources: list, today: str) -> str:
     chunks = chunk(sources)
-    query = f"{fee['fee_name']} {fee['description']} free plan limits upgrade Plus price billing"
+    query = f"{fee['fee_name']} {fee['description']} free plan limits upgrade Plus price per month INR GST billing"
     top = retrieve(chunks, query)
     by_id = {c["id"]: c for c in top}
     print(f"{len(chunks)} chunks; retrieved {len(top)}: {[c['id'] for c in top]}")
@@ -115,7 +115,7 @@ def explain(fee: dict, sources: list, today: str) -> str:
 Fee issue from user reviews: "{fee['fee_name']}" - {fee['description']}
 
 Write AT MOST {MAX_BULLETS} bullets using ONLY the source chunks below. Neutral, facts-only tone, no promises,
-no advice, no speculation. If the chunks do not state something, do not say it.
+no advice, no speculation. If the chunks do not state something, do not say it (never write that something is "not given" or "not stated").
 The customer is in India: if a chunk states prices in INR (₹), include one bullet with them, exactly as stated
 (including whether GST is included), and leave out USD prices unless no INR price is given. Each bullet needs:
 - "chunk_id": the chunk it comes from
