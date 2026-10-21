@@ -105,10 +105,11 @@ The code uses Zapier's generic tool `execute_zapier_write_action` with `GoogleDo
 `GoogleMailV2CLIAPI`/`draft_v2`, found by inspecting the live server. It speaks Streamable HTTP (Zapier does not
 support SSE) and works with `mcp` 1.x and 2.x.
 
-**Verification status.** Against the real Zapier server I verified the connection, the tool list, that both apps
-are enabled and connected, and the parameters of both actions. The write path itself was tested against a local
-stand-in server. **The real Docs append and Gmail draft have not been executed yet**; run them once through the
-Approval tab with `SIMULATED_MODE=false` and check the Doc and your Drafts folder.
+**Verification status.** Verified against the real Zapier server: the connection, the tool list, that both apps are
+enabled and connected, and the parameters of both actions. On 2026-10-21 the Approval tab was run in live mode
+(`SIMULATED_MODE=false`): Zapier returned success for both actions, the entry appeared in the Google Doc
+"Review Pulse Log", and the Gmail draft was created in Drafts (labelled `DRAFT`, not sent). The Doc entry and the draft
+contain the pulse as plain text, so markdown markers such as `##` appear literally.
 
 ## Project layout
 
