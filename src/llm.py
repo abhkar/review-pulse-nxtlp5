@@ -72,10 +72,10 @@ def call_claude_json(prompt: str, system: str = "", max_tokens: int = 4096):
         "Respond with valid JSON only. No commentary."
     raw = call_claude(prompt, system, max_tokens)
     try:
-        return json.loads(_parse_json(raw))
+        return _parse_json(raw)
     except json.JSONDecodeError as e:
         # One retry: show the model its bad output and ask for a fix.
         fix = (f"{prompt}\n\nYour previous reply was not valid JSON ({e}). "
                f"Previous reply:\n{raw}\n\nReturn ONLY the corrected JSON.")
         raw2 = call_claude(fix, system, max_tokens)
-        return json.loads(_parse_json(raw2))  # raises if still bad
+        return _parse_json(raw2)  # raises if still bad
