@@ -83,40 +83,17 @@ def payload_hash(payloads: dict) -> str:
 
 
 # ---------- 3. live Zapier MCP call ----------
+# This Zapier server exposes generic tools (execute_zapier_write_action, ...), not one tool per action.
+# We call it with the app's selected_api and action key, found via inspect_zapier_actions:
+#   Google Docs: GoogleDocsV2CLIAPI / append   (params: file, text, newline)
+#   Gmail:       GoogleMailV2CLIAPI / draft_v2 (params: subject, body, to, body_type)
 
-def _find_tool(tools, *must_have):
-    """Pick the tool whose name contains all the given words (Zapier names them like gmail_create_draft)."""
-    for t in tools:
-        if all(w in t.name.lower() for w in must_have):
-            return t
-    raise RuntimeError(f"No Zapier tool matching {must_have}. Tools offered: {[t.name for t in tools]}")
-
-
-def _schema(tool) -> dict:
-    """mcp 1.x calls it inputSchema, mcp 2.x input_schema."""
-    return getattr(tool, "inputSchema", None) or getattr(tool, "input_schema", None) or {}
+DOCS_API, DOCS_ACTION = "GoogleDocsV2CLIAPI", "append"
+GMAIL_API, GMAIL_ACTION = "GoogleMailV2CLIAPI", "draft_v2"
 
 
 def _is_error(result) -> bool:
     return bool(getattr(result, "isError", getattr(result, "is_error", False)))
-
-
-def _fill_args(tool, values: dict) -> dict:
-    """Map our values onto the tool's input schema by property name. Fail loudly on unknown required fields."""
-    schema = _schema(tool)
-    props = schema.get("properties", {})
-    args = {}
-    for name in props:
-        low = name.lower()
-        for key, val in values.items():
-            if key in low:
-                args[name] = val
-                break
-    missing = [r for r in schema.get("required", []) if r not in args]
-    if missing:
-        raise RuntimeError(f"Tool {tool.name} needs fields I can't fill: {missing}. "
-                           "Pre-set them in the Zapier tool settings or extend _fill_args.")
-    return args
 
 
 def _text(result) -> str:
@@ -127,6 +104,9 @@ async def _run_live(payloads: dict) -> list:
     url = os.getenv("ZAPIER_MCP_URL")
     if not url:
         raise RuntimeError("ZAPIER_MCP_URL is not set. Set it, or use SIMULATED_MODE=true.")
+    doc_name = os.getenv("GOOGLE_DOC_ID")
+    if not doc_name:
+        raise RuntimeError("GOOGLE_DOC_ID is not set: the Google Doc (name or ID as Zapier lists it) to append to.")
     from mcp import ClientSession
     try:                                   # mcp >= 2
         from mcp.client.streamable_http import streamable_http_client as http_client
@@ -134,33 +114,29 @@ async def _run_live(payloads: dict) -> list:
         from mcp.client.streamable_http import streamablehttp_client as http_client
 
     doc, email = payloads["doc_entry"], payloads["email"]
+    doc_text = (f"Weekly Product Pulse {doc['date']}\n\n{doc['weekly_pulse']}\n\n"
+                f"Fee issue: {doc['identified_fee_issue']['name']}\n"
+                + "\n".join(f"- {b}" for b in doc["explanation_bullets"])
+                + "\nSources:\n" + "\n".join(doc["source_links"]))
+    email_params = {"subject": email["subject"], "body": email["body"], "body_type": "plain"}
+    if os.getenv("DRAFT_TO"):
+        email_params["to"] = os.getenv("DRAFT_TO")
+    plan = [
+        ("google_docs_append", DOCS_API, DOCS_ACTION, {"file": doc_name, "text": doc_text, "newline": "true"}),
+        ("gmail_create_draft", GMAIL_API, GMAIL_ACTION, email_params),
+    ]
     results = []
     async with http_client(url) as streams:
         async with ClientSession(streams[0], streams[1]) as session:
             await session.initialize()
-            tools = (await session.list_tools()).tools
-            print("Zapier tools:", [t.name for t in tools])
-            doc_text = (f"Weekly Product Pulse {doc['date']}\n\n{doc['weekly_pulse']}\n\n"
-                        f"Fee issue: {doc['identified_fee_issue']['name']}\n"
-                        + "\n".join(f"- {b}" for b in doc["explanation_bullets"])
-                        + "\nSources:\n" + "\n".join(doc["source_links"]))
-            plan = [
-                ("google_docs_append", _find_tool(tools, "doc", "append"),
-                 {"text": doc_text, "content": doc_text, "document": os.getenv("GOOGLE_DOC_ID", ""),
-                  "instructions": "Append this weekly product pulse entry to the document:\n" + doc_text}),
-                ("gmail_create_draft", _find_tool(tools, "gmail", "draft"),
-                 {"subject": email["subject"], "body": email["body"], "to": os.getenv("DRAFT_TO", ""),
-                  "instructions": "Create a Gmail DRAFT (do not send) with this subject and body.\n"
-                                  f"Subject: {email['subject']}\n\n{email['body']}"}),
-            ]
-            for action, tool, values in plan:
-                values = {k: v for k, v in values.items() if v != ""}
+            for action, api, key, params in plan:
                 try:
-                    res = await session.call_tool(tool.name, _fill_args(tool, values))
-                    results.append({"action": action, "tool": tool.name,
+                    res = await session.call_tool("execute_zapier_write_action",
+                                                  {"selected_api": api, "action": key, "params": params})
+                    results.append({"action": action, "tool": f"{api}/{key}",
                                     "status": "error" if _is_error(res) else "success", "result": _text(res)})
                 except Exception as e:  # keep going so the second action is still attempted
-                    results.append({"action": action, "tool": tool.name, "status": "error",
+                    results.append({"action": action, "tool": f"{api}/{key}", "status": "error",
                                     "result": f"{type(e).__name__}: {e}"})
     return results
 
