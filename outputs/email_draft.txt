@@ -1,0 +1,42 @@
+Subject: Weekly Product Pulse + Customer Clarification — 2026-10-21
+
+# Weekly Product Pulse - 2026-10-21
+
+_ChatGPT Android app (India), 2026-07-29 to 2026-10-20, 9,009 sampled reviews_
+
+## Top themes
+Inaccurate or unreliable answers (790 reviews, 8.8%): Users report wrong, vague or hallucinated answers, ignored instructions, and declining quality over time.
+Learning, study help and personal companionship (789 reviews, 8.8%): Users value it as a tutor and as a companion offering emotional support.
+Usage limits and paywall frustration (646 reviews, 7.2%): Users complain about free-tier caps, quick lockouts, forced upgrades, and limits hitting paying subscribers.
+
+## What users said
+- "it has been giving vague or incorrect answers, repeatedly saying things like "maybe" or "it's possible."" (2026-09-17, 1★)
+- "I use for study when no one is here to teach me I so chat GPT teaches me" (2026-08-24, 5★)
+- "you reach your daily limit in just a minute when you're paying for it" (2026-08-26, 1★)
+
+## Key observation
+Accuracy complaints lead themes, with usage limits close behind. The paywalled usage limits fee issue shows free users blocked after few messages and pushed toward Plus, while learning and companionship remain valued.
+
+## Actions
+1. Investigate hallucinations and ignored-instruction reports to improve answer reliability.
+2. Review free-tier caps and messaging shown when users hit limits.
+3. Check why paying subscribers still encounter usage limits.
+
+---
+Customer support snippet (reusable):
+
+# What the official sources say about free-plan limits and upgrades
+
+- Free users have unlimited everyday text chats, subject to abuse-prevention safeguards, while file uploads, image generation, voice, data analysis and other tools have separate usage limits. [source 1]
+- ChatGPT notifies users when they reach an applicable limit. [source 1]
+- GPT usage follows the Free tier model limit; when it is reached, GPT access pauses until the limit resets, and reset timing is shown in-product. [source 1]
+- Free users are limited to 3 file uploads per day, and OpenAI may lower upload limits during peak hours. [source 5]
+- On the Free tier, advanced functionality such as data analysis, file uploads and image creation can have stricter limits than paid plans. [source 1]
+- Go is listed at ₹399/month (inclusive of GST), and Plus at ₹1,999/month (inclusive of GST). [source 3]
+
+Official sources:
+- https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq
+- https://chatgpt.com/#pricing
+- https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt
+
+Last checked: 2026-10-21
