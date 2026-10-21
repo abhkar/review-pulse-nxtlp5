@@ -31,7 +31,7 @@ def _model() -> str:
 
 
 def call_claude(prompt: str, system: str = "", max_tokens: int = 4096,
-                temperature: float = 0.2, retries: int = 3) -> str:
+                retries: int = 3) -> str:
     """Return the model's text reply. Backs off on rate limits / transient errors."""
     client = _get_client()
     for attempt in range(retries):
@@ -39,7 +39,6 @@ def call_claude(prompt: str, system: str = "", max_tokens: int = 4096,
             resp = client.messages.create(
                 model=_model(),
                 max_tokens=max_tokens,
-                temperature=temperature,
                 system=system or anthropic.NOT_GIVEN,
                 messages=[{"role": "user", "content": prompt}],
             )
@@ -67,17 +66,16 @@ def _parse_json(text: str):
     return obj
 
 
-def call_claude_json(prompt: str, system: str = "", max_tokens: int = 4096,
-                     temperature: float = 0.2):
+def call_claude_json(prompt: str, system: str = "", max_tokens: int = 4096):
     """Call Claude and parse a JSON reply. Retries once on a parse failure."""
     system = (system + "\n" if system else "") + \
         "Respond with valid JSON only. No commentary."
-    raw = call_claude(prompt, system, max_tokens, temperature)
+    raw = call_claude(prompt, system, max_tokens)
     try:
         return json.loads(_parse_json(raw))
     except json.JSONDecodeError as e:
         # One retry: show the model its bad output and ask for a fix.
         fix = (f"{prompt}\n\nYour previous reply was not valid JSON ({e}). "
                f"Previous reply:\n{raw}\n\nReturn ONLY the corrected JSON.")
-        raw2 = call_claude(fix, system, max_tokens, 0.0)
+        raw2 = call_claude(fix, system, max_tokens)
         return json.loads(_parse_json(raw2))  # raises if still bad
